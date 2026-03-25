@@ -1,0 +1,37 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserdata/
+*.xcworkspace/xcuserdata/
+xcuserdata/
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+Packages/
+Package.resolved
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# CocoaPods (not used but just in case)
+Pods/
+
+# IDE
+*.swp
+*~
+.idea/
+.vscode/
+
+# Secrets / credentials
+*.env
+*.pem
+*.p12
+*.mobileprovision
