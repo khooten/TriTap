@@ -7,7 +7,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             PersonalModeView(isEnrolled: $isEnrolled)
-                .navigationTitle("TriTap")
+                .navigationTitle("TriTap Test")
                 .navigationBarTitleDisplayMode(.inline)
         }
     }

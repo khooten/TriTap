@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A10001 /* TriTapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10001 /* TriTapApp.swift */; };
+		A10001 /* TriTapTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10001 /* TriTapTestApp.swift */; };
 		A10002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10002 /* ContentView.swift */; };
 		A10004 /* PersonalModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10004 /* PersonalModeView.swift */; };
 		A10006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10006 /* Assets.xcassets */; };
@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B10001 /* TriTapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriTapApp.swift; sourceTree = "<group>"; };
+		B10001 /* TriTapTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriTapTestApp.swift; sourceTree = "<group>"; };
 		B10002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B10004 /* PersonalModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalModeView.swift; sourceTree = "<group>"; };
 		B10006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,25 +48,25 @@
 		G10001 = {
 			isa = PBXGroup;
 			children = (
-				G10002 /* TriTapApp */,
+				G10002 /* TriTapTest */,
 				B10011 /* TypingAuthSDK */,
 				G10004 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		G10002 /* TriTapApp */ = {
+		G10002 /* TriTapTest */ = {
 			isa = PBXGroup;
 			children = (
 				G10003 /* Sources */,
 				B10006 /* Assets.xcassets */,
 			);
-			path = TriTapApp;
+			path = TriTapTest;
 			sourceTree = "<group>";
 		};
 		G10003 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				B10001 /* TriTapApp.swift */,
+				B10001 /* TriTapTestApp.swift */,
 				B10002 /* ContentView.swift */,
 				B10004 /* PersonalModeView.swift */,
 				B10009 /* PasscodeGridView.swift */,
@@ -91,7 +91,7 @@
 /* Begin PBXNativeTarget section */
 		T10001 /* Notary */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C10003 /* Build configuration list for PBXNativeTarget "Notary" */;
+			buildConfigurationList = C10003 /* Build configuration list for PBXNativeTarget "TriTapTest" */;
 			buildPhases = (
 				S10001 /* Sources */,
 				F10001 /* Frameworks */,
@@ -101,11 +101,11 @@
 			);
 			dependencies = (
 			);
-			name = Notary;
+			name = TriTapTest;
 			packageProductDependencies = (
 				D10001 /* TypingAuthSDK */,
 			);
-			productName = TriTap;
+			productName = TriTapTest;
 			productReference = B10010 /* Notary.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -124,7 +124,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C10001 /* Build configuration list for PBXProject "Notary" */;
+			buildConfigurationList = C10001 /* Build configuration list for PBXProject "TriTapTest" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -161,7 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A10001 /* TriTapApp.swift in Sources */,
+				A10001 /* TriTapTestApp.swift in Sources */,
 				A10002 /* ContentView.swift in Sources */,
 				A10004 /* PersonalModeView.swift in Sources */,
 				A10009 /* PasscodeGridView.swift in Sources */,
@@ -245,7 +245,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZB662GXLH6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = TriTap;
+				INFOPLIST_KEY_CFBundleDisplayName = TriTapTest;
 				INFOPLIST_KEY_NSMotionUsageDescription = "Notary uses motion sensors to capture your unique typing signature for biometric authentication.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -276,7 +276,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZB662GXLH6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = TriTap;
+				INFOPLIST_KEY_CFBundleDisplayName = TriTapTest;
 				INFOPLIST_KEY_NSMotionUsageDescription = "Notary uses motion sensors to capture your unique typing signature for biometric authentication.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -301,7 +301,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C10001 /* Build configuration list for PBXProject "Notary" */ = {
+		C10001 /* Build configuration list for PBXProject "TriTapTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C10010 /* Debug */,
@@ -310,7 +310,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C10003 /* Build configuration list for PBXNativeTarget "Notary" */ = {
+		C10003 /* Build configuration list for PBXNativeTarget "TriTapTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C10020 /* Debug */,

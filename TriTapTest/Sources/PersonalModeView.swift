@@ -113,6 +113,7 @@ struct PersonalModeView: View {
                     if samplesCollected >= minimumSamples {
                         Button {
                             sdk.finalizeEnrollment()
+                            tuneFromHistory()
                             isEnrolled = true
                             captureMode = .test
                         } label: {
@@ -193,6 +194,28 @@ struct PersonalModeView: View {
                     modelContext.insert(record)
                     try? modelContext.save()
                 },
+                onFinalized: { [modelContext] in
+                    // Auto-tune tolerances from labeled SwiftData history
+                    let descriptor = FetchDescriptor<AttemptRecord>(
+                        predicate: #Predicate { $0.isImpostor != nil }
+                    )
+                    guard let labeled = try? modelContext.fetch(descriptor),
+                          labeled.contains(where: { $0.isImpostor == true }),
+                          labeled.contains(where: { $0.isImpostor == false }) else { return }
+
+                    var history: [(feature: FeatureName, zScore: Double, isImpostor: Bool)] = []
+                    for attempt in labeled {
+                        guard let isImp = attempt.isImpostor else { continue }
+                        for rec in attempt.featureRecords {
+                            guard let feature = FeatureName(rawValue: rec.featureName) else { continue }
+                            history.append((feature: feature, zScore: rec.bestZScore, isImpostor: isImp))
+                        }
+                    }
+
+                    if !history.isEmpty {
+                        sdk.tuneTolerancesFromHistory(history)
+                    }
+                },
                 onDone: {
                     captureMode = nil
                     samplesCollected = sdk.enrollmentSampleCount
@@ -209,6 +232,28 @@ struct PersonalModeView: View {
                 stats = sdk.enrollmentStats()
             }
             isEnrolled = sdk.isEnrolled
+        }
+    }
+
+    private func tuneFromHistory() {
+        let descriptor = FetchDescriptor<AttemptRecord>(
+            predicate: #Predicate { $0.isImpostor != nil }
+        )
+        guard let labeled = try? modelContext.fetch(descriptor),
+              labeled.contains(where: { $0.isImpostor == true }),
+              labeled.contains(where: { $0.isImpostor == false }) else { return }
+
+        var history: [(feature: FeatureName, zScore: Double, isImpostor: Bool)] = []
+        for attempt in labeled {
+            guard let isImp = attempt.isImpostor else { continue }
+            for rec in attempt.featureRecords {
+                guard let feature = FeatureName(rawValue: rec.featureName) else { continue }
+                history.append((feature: feature, zScore: rec.bestZScore, isImpostor: isImp))
+            }
+        }
+
+        if !history.isEmpty {
+            sdk.tuneTolerancesFromHistory(history)
         }
     }
 

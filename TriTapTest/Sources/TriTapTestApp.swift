@@ -3,7 +3,7 @@ import SwiftData
 import TypingAuthSDK
 
 @main
-struct TriTapApp: App {
+struct TriTapTestApp: App {
     let container: ModelContainer
 
     init() {
@@ -20,7 +20,7 @@ struct TriTapApp: App {
                     try context.delete(model: AttemptRecord.self)
                     try context.save()
                 } catch {
-                    print("[NotaryApp] Failed to clear attempt history on reset: \(error)")
+                    print("[TriTapTest] Failed to clear attempt history on reset: \(error)")
                 }
             }
         } catch {

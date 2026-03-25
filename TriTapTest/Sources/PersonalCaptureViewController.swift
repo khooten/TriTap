@@ -42,6 +42,7 @@ final class PersonalCaptureViewController: UIViewController, PasscodeKeyboardDel
     var onSampleCaptured: ((AuthenticationSample) -> Void)?
     var onAuthAttempt: ((AuthenticationSample) -> AuthResult)?
     var onAttemptRecorded: ((RawMatchEngine.AttemptFeatureResult, Bool?) -> Void)?  // (result, isImpostor)
+    var onFinalized: (() -> Void)?  // Called after finalizeEnrollment — app can tune tolerances
     var onDone: (() -> Void)?
 
     /// Start in training or test mode
@@ -257,8 +258,10 @@ final class PersonalCaptureViewController: UIViewController, PasscodeKeyboardDel
 
     @objc private func modeChanged() {
         if isTesting {
-            // Rebuild clusters before switching to test
+            // Rebuild engine before switching to test
             TypingAuthSDK.shared.finalizeEnrollment()
+            // Auto-tune tolerances from labeled history
+            onFinalized?()
             // Update passcode display
             if let digits = TypingAuthSDK.shared.enrolledPasscode {
                 passcodeRevealLabel.text = "Passcode: " + digits.map { String($0) }.joined(separator: "  ")
@@ -452,6 +455,7 @@ struct PersonalCaptureView: UIViewControllerRepresentable {
     let onSampleCaptured: (AuthenticationSample) -> Void
     let onAuthAttempt: (AuthenticationSample) -> AuthResult
     var onAttemptRecorded: ((RawMatchEngine.AttemptFeatureResult, Bool?) -> Void)?
+    var onFinalized: (() -> Void)?
     let onDone: () -> Void
 
     func makeUIViewController(context: Context) -> PersonalCaptureViewController {
@@ -460,6 +464,7 @@ struct PersonalCaptureView: UIViewControllerRepresentable {
         vc.onSampleCaptured = onSampleCaptured
         vc.onAuthAttempt = onAuthAttempt
         vc.onAttemptRecorded = onAttemptRecorded
+        vc.onFinalized = onFinalized
         vc.onDone = onDone
         return vc
     }

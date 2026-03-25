@@ -1,3 +1,7 @@
+# SDK is its own repo (github.com/khooten/TypingAuthSDK)
+# Keep locally for building but don't include in this repo
+TypingAuthSDK/
+
 # Xcode
 build/
 DerivedData/
