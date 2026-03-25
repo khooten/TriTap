@@ -134,7 +134,7 @@
 			);
 			mainGroup = G10001;
 			packageReferences = (
-				PR10001 /* XCLocalSwiftPackageReference "TypingAuthSDK" */,
+				PR10001 /* XCRemoteSwiftPackageReference "TypingAuthSDK" */,
 			);
 			productRefGroup = G10004 /* Products */;
 			projectDirPath = "";
@@ -321,16 +321,21 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		PR10001 /* XCLocalSwiftPackageReference "TypingAuthSDK" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = TypingAuthSDK;
+/* Begin XCRemoteSwiftPackageReference section */
+		PR10001 /* XCRemoteSwiftPackageReference "TypingAuthSDK" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/khooten/TypingAuthSDK.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		D10001 /* TypingAuthSDK */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = PR10001 /* XCRemoteSwiftPackageReference "TypingAuthSDK" */;
 			productName = TypingAuthSDK;
 		};
 /* End XCSwiftPackageProductDependency section */
